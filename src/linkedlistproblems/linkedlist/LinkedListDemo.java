@@ -1,4 +1,4 @@
-package linkedlist;
+package linkedlistproblems.linkedlist;
 
 public class LinkedListDemo {
 	
@@ -8,13 +8,13 @@ public class LinkedListDemo {
 		
 		LinkedListHandler linkedListHandler = new LinkedListHandler();
 		
-		linkedListHandler.insert(new Node(1));
-		linkedListHandler.insert(new Node(2));
-		linkedListHandler.insert(new Node(3));
-		linkedListHandler.insert(new Node(4));
-		linkedListHandler.insert(new Node(5));
-		linkedListHandler.insert(new Node(6));
-		linkedListHandler.insert(new Node(7));
+		linkedListHandler.insert(new SinglyNode(1));
+		linkedListHandler.insert(new SinglyNode(2));
+		linkedListHandler.insert(new SinglyNode(3));
+		linkedListHandler.insert(new SinglyNode(4));
+		linkedListHandler.insert(new SinglyNode(5));
+		linkedListHandler.insert(new SinglyNode(6));
+		linkedListHandler.insert(new SinglyNode(7));
 //		
 		System.out.println("--------------------------------------------------");
 		

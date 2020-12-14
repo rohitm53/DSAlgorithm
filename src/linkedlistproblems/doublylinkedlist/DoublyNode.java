@@ -1,4 +1,4 @@
-package doublylinkedlist;
+package linkedlistproblems.doublylinkedlist;
 
 public class DoublyNode {
 	
