@@ -16,7 +16,7 @@ public class CircularSinglyLinkedListDemo {
 
         listHandler.printFromHead();
 
-        listHandler.addNodeAfterSpecificNode(new SinglyNode(33),1);
+        listHandler.addNodeAfterSpecificNode(new SinglyNode(33),4);
         System.out.println("-----------After Update-------------------------------");
 
 

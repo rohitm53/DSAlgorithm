@@ -14,13 +14,15 @@ public class CircularSinglyLinkedListHandler {
             singlyNode.next = singlyNode;
             head=tail=singlyNode;
         }else{
-            SinglyNode currentNode = head;
-            while(currentNode.next!=head){
-                currentNode = currentNode.next;
+
+            SinglyNode curr = head;
+            while(curr.next!=head){
+                curr=curr.next;
             }
-            currentNode.next=singlyNode;
-            singlyNode.next=head;
+            curr.next=singlyNode;
             tail=singlyNode;
+            tail.next=head;
+
         }
     }
 
@@ -30,21 +32,33 @@ public class CircularSinglyLinkedListHandler {
         if(head==null){
             System.out.println("Circular linked list is empty");
         }else{
+
             SinglyNode curr = head;
-            while(curr.next!=head){
-                if(curr.data==nodeDataValue){
-                    break;
+
+            while(curr.data!=nodeDataValue){
+                if(curr.next==head){
+                    System.out.println("Provided node is not available in list");
+                    System.exit(1);
                 }
-                curr=curr.next;
+                curr = curr.next;
             }
-            if(curr!=tail){
-                SinglyNode nextNode = curr.next;
-                curr.next=node;
+
+            if(curr==head && curr.next==head){
+                head.next=node;
+                node.next=head;
+                tail=node;
+            }else if(curr==head){
+                SinglyNode nextNode = head.next;
+                head.next=node;
                 node.next=nextNode;
-            }else{
+            }else if(curr==tail){
                 curr.next=node;
                 node.next=head;
                 tail=node;
+            }else{
+                SinglyNode nextNode = curr.next;
+                curr.next=node;
+                node.next=nextNode;
             }
         }
     }
@@ -54,32 +68,33 @@ public class CircularSinglyLinkedListHandler {
 
         if (head==null){
             System.out.println("Circular Linked list is empty");
-        }else{
+        }else {
 
             SinglyNode curr = head;
-            SinglyNode prev=head;
-            while (curr.next!=head){
-                if(curr.data==nodeDataValue){
-                    break;
+            SinglyNode prev=new SinglyNode();
+
+            while(curr.data!=nodeDataValue){
+                if(curr.next==head){
+                    System.out.println("Provided node is not available in list");
+                    System.exit(1);
                 }
                 prev=curr;
                 curr=curr.next;
             }
-            if(curr!=head){
-                // means we did not reached upto head , we got our required node
-                prev.next=curr.next;
 
+            if(curr==head && curr.next==head){
+                head=tail=null; //only one element available in Circular linked list
+            }else if(curr==head){
+               head=head.next; //element found at head in Circular linked list
+               tail.next=head;
+            }else if(curr==tail){
+                prev.next=head; //element found in middle of Circular Linked list
+                tail=prev;
             }else{
-                if(curr==head && head.data==nodeDataValue){
-                    head=null;
-                }else{
-                    System.out.println("Provided node is not available");
-                }
+                prev.next=curr.next;
             }
         }
-
     }
-
 
     public void printFromHead(){
         if(head==null){
