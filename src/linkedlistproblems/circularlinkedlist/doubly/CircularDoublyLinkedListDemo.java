@@ -15,9 +15,11 @@ public class CircularDoublyLinkedListDemo {
 
 
         handler.printFromHead();
+        handler.addNodeBesidesLevelFromNode(4,2,new DoublyNode(33),false);
 
+        System.out.println("-----------------------Updated value------------------------------");
+        handler.printFromHead();
 
     }
-
 
 }
