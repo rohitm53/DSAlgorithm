@@ -1,7 +1,5 @@
 package problems.arrays;
 
-import java.util.Arrays;
-
 public class MinimunSwap {
 
     static int minimumSwaps(int[] arr) {
