@@ -1,7 +1,7 @@
 package problems.arrays.sorting;
 
 import java.util.Arrays;
-
+//Time Complexity  : O(nlogn)
 public class QuickSortAlgorithm {
 
 
