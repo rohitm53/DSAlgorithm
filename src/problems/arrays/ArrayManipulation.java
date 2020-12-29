@@ -4,12 +4,10 @@ public class ArrayManipulation {
 
     public static void main(String[] args) {
 
-        int n = 10;
+        int n = 5;
         int[][] queries = {
-                {2,6,8},
-                {3,5,7},
-                {1,8,1},
-                {5,9,15}
+                {1,2,100},
+                {2,5,100},
         };
 
         long result = arrayManipulation(n,queries);
@@ -19,23 +17,24 @@ public class ArrayManipulation {
 
     static long arrayManipulation(int n, int[][] queries) {
 
-        int[] query1 = queries[0];
+        long maxValue=0;
+        long[] array = new long[n+2];
 
-        long maxValue = query1[2];
-        long maxStartIndex = query1[0]-1;
-        long maxEndIndex = query1[0]-1;
+        for(int [] query : queries){
 
-        if(queries.length>1){
+            int a = query[0];
+            int b = query[1];
+            int k = query[2];
 
-            for(int i=0;i<queries.length;i++){
-
-                int start = queries[i][0]-1;
-                int end = queries[i][1]-1;
-                int k = queries[i][2];
-
-
+            array[a-1]=array[a-1]+k;
+            array[b]=array[b]-k;
+        }
+        maxValue = array[0];
+        for(int i=1;i<n;i++){
+            array[i] = array[i-1]+array[i];
+            if(array[i]>maxValue){
+                maxValue=array[i];
             }
-
         }
 
         return maxValue;
