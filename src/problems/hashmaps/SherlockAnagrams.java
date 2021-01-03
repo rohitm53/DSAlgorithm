@@ -13,43 +13,56 @@ public class SherlockAnagrams {
 
     public static void main(String[] args) {
 
-        characterCount("mom");
-        printSubstring("mom");
-
-        System.out.println(sherlockAndAnagrams("mom"));
+        System.out.println(sherlockAndAnagrams("kkkk"));
 
     }
 
     public static int sherlockAndAnagrams(String str){
         int anagramCount=0;
-        Map<String,Integer> hmSubStringCount = new HashMap<>();
         int len = str.length();
+        ArrayList<String> arrSubString = new ArrayList<>();
         for(int i=0;i<len;i++){
             for(int j=i+1;j<len+1;j++){
                 String subString= str.substring(i,j);
-                if(hmSubStringCount.containsKey(subString)){
-                    int count = hmSubStringCount.get(subString);
-                    count++;
-                    hmSubStringCount.put(subString,count);
-                }else{
-                    hmSubStringCount.put(subString,1);
+                arrSubString.add(subString);
+            }
+        }
+
+        len  = arrSubString.size();
+
+        for(int i=0;i<len;i++){
+            for(int j=i+1;j<len;j++){
+                if(isAnagram(arrSubString.get(i),arrSubString.get(j))){
+                    anagramCount++;
                 }
             }
         }
 
-        for(String key : hmSubStringCount.keySet()){
-
-            if(key.length()==1 && hmSubStringCount.get(key)%2==0){
-                int pairCount = hmSubStringCount.get(key)/2;
-                anagramCount=anagramCount+pairCount;
-            }
-
-        }
-
+        System.out.println(arrSubString);
 
         return anagramCount;
     }
 
+    public static boolean isAnagram(String s1,String s2){
+
+        if(s1.length()!=s2.length()){
+            return false;
+        }else{
+            int[] count = new int[26];
+
+            for(int i=0;i<s1.length();i++){
+                count[s1.charAt(i)-'a']++;
+                count[s2.charAt(i)-'a']--;
+            }
+
+            for(int i=0;i<26;i++){
+                if(count[i]!=0){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     public static void printSubstring(String str){
         ArrayList<String> arrStr = new ArrayList<>();
