@@ -6,7 +6,8 @@ public class QuickSortAlgorithm {
 
 
     public static void main(String[] args) {
-        int[] arr = {2,5,1,10,6,9,8};
+//        int[] arr = {2,5,1,10,6,9,8};
+        int[] arr = {1,12,5,111,200,1000,10,10};
         int low = 0;
         int high = arr.length-1;
         quickSort(arr,low,high);
@@ -27,23 +28,23 @@ public class QuickSortAlgorithm {
     private static int partition(int[] arr, int low, int high) {
 
         int pivot = arr[low];
-        int i=low,j=high;
+        int i=low-1,j=high+1;
 
-        while(i<j){
+        while(true){
 
-          while(i<arr.length && pivot>=arr[i]){
+          do {
               i++;
-          }
+          }while (i<arr.length && arr[i]<=pivot);
 
-          while(pivot<arr[j]){
+          do{
               j--;
+          }while (arr[j]>pivot);
+
+          if(i >= j){
+              return j;
           }
-          if(i<j){
-                swap(arr,i,j);
-            }
+          swap(arr,i,j);
         }
-        swap(arr,low,j);
-        return j;
     }
 
     private static void swap(int[] arr, int a, int b){

@@ -19,7 +19,6 @@ public class ArrayManipulation {
 
         long maxValue=0;
         long[] array = new long[n+2];
-
         for(int [] query : queries){
 
             int a = query[0];
