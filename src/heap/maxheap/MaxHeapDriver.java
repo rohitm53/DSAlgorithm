@@ -22,7 +22,7 @@ public class MaxHeapDriver {
         maxHeapHandler.printHeap();
 
         System.out.println("Removing Top value : "+maxHeapHandler.pollMax());
-        maxHeapHandler.printHeap();
+        maxHeapHandler.printAllLeadfNode();
     }
 
 }

@@ -1,7 +1,5 @@
 package heap.maxheap;
 
-import java.util.Arrays;
-
 public class MaxHeapHandler {
 
     private int[] heap;
@@ -41,30 +39,11 @@ public class MaxHeapHandler {
 
     public void printAllLeadfNode(){
         for(int i=1;i<=size;i++){
-            int leftChildIndex = (2*i);
-            int rightChildIndex = (2*i)+1;
-
-            if(leftChildIndex> size && rightChildIndex>size){
+            if(getLeftChildIndex(i)> size && getRightChildIndex(i)>size){
                 System.out.println(heap[i]);
             }
-
         }
     }
-
-    //---------------Helper methods----------------------------------------------
-
-
-    private int getLeftChildIndex(int pos){
-        return 2 * pos;
-    }
-    private int getRightChildIndex(int pos){
-        return (2 * pos)+1;
-    }
-
-    private int getParentIndex(int position){
-        return position/2;
-    }
-
 
     //Function to remove maximum element from top
     public int pollMax(){
@@ -92,9 +71,29 @@ public class MaxHeapHandler {
 
     }
 
+    //---------------Helper methods----------------------------------------------
+
+
+    private int getLeftChildIndex(int pos){
+        return 2 * pos;
+    }
+    private int getRightChildIndex(int pos){
+        return (2 * pos)+1;
+    }
+
+    private int getParentIndex(int position){
+        return position/2;
+    }
+
+
+
+
     //Function to check node at provided position is leaf node
     public boolean isLeaf(int pos){
-        return pos >= (size / 2) && pos <= size  ;
+        /*
+        * Leaf node can be present from {Floor(n/2)+1 to n }
+        * */
+        return (pos>=((size/2)+1)) && (pos<size) ;
     }
 
     public void printHeight(){

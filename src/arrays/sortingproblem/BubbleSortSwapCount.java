@@ -1,4 +1,4 @@
-package problems.arrays.sortingproblem;
+package arrays.sortingproblem;
 
 public class BubbleSortSwapCount {
 

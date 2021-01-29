@@ -1,4 +1,4 @@
-package problems.arrays.sortingproblem;
+package arrays.sortingproblem;
 
 import java.util.Arrays;
 

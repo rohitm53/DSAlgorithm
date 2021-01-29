@@ -1,4 +1,4 @@
-package problems.arrays.sorting;
+package arrays.sorting;
 
 import java.util.Arrays;
 //Time Complexity  : O(n^2)

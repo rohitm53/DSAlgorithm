@@ -1,7 +1,6 @@
-package problems.arrays.sorting;
+package arrays.sorting;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class RunningMedian {
