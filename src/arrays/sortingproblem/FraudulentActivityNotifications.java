@@ -1,52 +1,48 @@
 package arrays.sortingproblem;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class FraudulentActivityNotifications {
 
     public static void main(String[] args) {
 
-        int[] expenditure = {2,3,4,2,3,6,8,4,5};
+        int[] expenditure = {2,3 ,4 ,2, 3 ,6 ,8 ,4, 5};
         int d = 5;
         System.out.println(activityNotifications(expenditure,d));
 
     }
     // Complete the activityNotifications function below.
     static int activityNotifications(int[] expenditure, int d) {
-        int result=0;
-        int len = expenditure.length;
-        ArrayList<Integer> listExp = new ArrayList<>();
+        int notificationCount=0;
+        Arrays.sort(expenditure);
 
-        if(len>0){
+        for(int i=0;i<expenditure.length;i++){
 
-            for(int i=0;i<len;i++){
+            if((i+1)>d){
 
-                int mainExp = expenditure[i];
-                if((i+1)>d){
+                Integer[] subArray = IntStream.range((i-d),i).
+                        mapToObj(k->expenditure[k]).
+                        toArray(Integer[]::new);
 
-                    int size = listExp.size();
-                    if(size%2==0){
-                        int midIndex = size/2;
-                        int median = (listExp.get(midIndex) + listExp.get(midIndex+1))*2;
-                        if(mainExp>=median){
-                            result++;
-                        }
-                    }else{
-                        int midIndex = size/2;
-                        int median = (listExp.get(midIndex))*2;
-                        if(median>=mainExp){
-                            result++;
-                        }
+                if(d%2==0){
+                    int mid = d/2;
+                    int median  = ((subArray[mid] + subArray[mid-1])/2);
+
+                    if(expenditure[i]>=2*median){
+                        notificationCount++;
                     }
-                    listExp.remove(i-d);
+                }else{
+                    int median = subArray[subArray.length/2];
+                    if(expenditure[i]>=2*median){
+                        notificationCount++;
+                    }
                 }
-                listExp.add(mainExp);
-                Collections.sort(listExp);
             }
 
         }
-        return result;
+
+        return notificationCount;
     }
 
 }
