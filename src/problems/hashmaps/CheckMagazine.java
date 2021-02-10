@@ -10,7 +10,6 @@ public class CheckMagazine {
         String[] note = {"two" ,"times", "two", "is" ,"four"};
 
         checkMagazine(magazine,note);
-
     }
 
     static void checkMagazine(String[] magazine, String[] note) {

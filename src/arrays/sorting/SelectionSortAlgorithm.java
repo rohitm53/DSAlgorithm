@@ -2,7 +2,7 @@ package arrays.sorting;
 
 import java.util.Arrays;
 //Time Complexity  : O(n^2)
-public class SelectionSort {
+public class SelectionSortAlgorithm {
 
     public static void main(String[] args) {
         int[] arr = {2,5,1,10,6,9,8};

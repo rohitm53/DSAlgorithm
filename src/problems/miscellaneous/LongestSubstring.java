@@ -1,43 +1,43 @@
 package problems.miscellaneous;
 
-import java.util.HashSet;
+import java.util.*;
 
 public class LongestSubstring {
 
     public static void main(String[] args) {
 
-        System.out.println(longestSubstringLength("abcbbcbb"));
+        System.out.println(longestSubstringLength("dvdf"));
 
     }
 
+    private static int longestSubstringLength(String str) {
 
-    public static int longestSubstringLength(String str){
+        int maxLen =0;
+        int n = str.length();
+        Map<Character,Integer> hmPositions = new HashMap<>();
+        int left=0,right=0;
 
-        int aPointer=0;
-        int bPointer=0;
-        int max=0;
-        String maxStr = "";
+        while(right<n){
 
-        HashSet<Character> hashSet = new HashSet<>();
+            char ch = str.charAt(right);
 
-        while (bPointer<str.length()){
-
-            if(!hashSet.contains(str.charAt(bPointer))){
-                hashSet.add(str.charAt(bPointer));
-                bPointer++;
-                max = Math.max(hashSet.size(),max);
-                if(max<=hashSet.size()){
-                    maxStr = hashSet.toString();
-                }
-
+            if(!hmPositions.containsKey(ch)){
+                hmPositions.put(ch,right);
             }else{
-                hashSet.remove(str.charAt(aPointer));
-                aPointer++;
+
+                int prevPos = hmPositions.get(ch);
+                if(prevPos>=left && prevPos<=right){
+                    left=prevPos+1;
+                }
+                hmPositions.put(ch,right);
             }
+            maxLen = Math.max(maxLen,(right-left)+1);
+            right++;
+
         }
-        System.out.println(maxStr);
-        return max;
+        return maxLen;
     }
+
 
 
 }

@@ -2,7 +2,7 @@ package arrays.sorting;
 
 import java.util.Arrays;
 
-public class CountingSort {
+public class CountingSortAlgorithm {
 
     public static void main(String[] args) {
 
